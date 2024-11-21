@@ -8,12 +8,15 @@ func countMaxCons(nums []int) int {
 	var maxC = 0
 	var currentMax = 0
 	var currentVal = 0
+	if len(nums) < 2 {
+		return 0
+	}
 	for _, v := range nums {
 		if v != currentVal {
 			maxC = max(maxC, currentMax)
 			currentVal = v
 			currentMax = 1
-		} else {
+		} else if v != 0 {
 			currentMax++
 		}
 	}
@@ -22,6 +25,6 @@ func countMaxCons(nums []int) int {
 }
 
 func main() {
-	res := countMaxCons([]int{1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1})
+	res := countMaxCons([]int{0, 0})
 	fmt.Println("Max Consecetices", res)
 }
